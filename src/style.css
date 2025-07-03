@@ -4,119 +4,180 @@
 
 /* Custom scrollbar */
 .chat-scroll::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .chat-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
 }
 
 .chat-scroll::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.3);
-  border-radius: 4px;
-  transition: background 0.2s ease;
+    background: rgba(34, 197, 94, 0.3);
+    border-radius: 4px;
+    transition: background 0.2s ease;
 }
 
 .chat-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.5);
+    background: rgba(34, 197, 94, 0.5);
 }
 
 .chat-scroll {
-  scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
+    scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
 }
 
 /* Custom animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* Message bubble animations */
 .message-bubble {
-  transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .message-bubble:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Quick question button hover effects */
 .quick-question {
-  transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .quick-question:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
+}
+
+/* Football styles */
+.football {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    background: none;
+    border: none;
+}
+
+.football:hover {
+    transform: scale(1.1);
+}
+
+/* Goal post styles */
+.goal-post {
+    width: 60px;
+    height: 45px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transform: translateY(-8px);
+}
+
+/* Goal animation */
+@keyframes goalShot {
+    0% { 
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateX(30px) translateY(-10px) scale(0.8);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translateX(60px) translateY(0) scale(0.6);
+        opacity: 0;
+    }
+}
+
+.goal-animation {
+    animation: goalShot 0.8s ease-out forwards;
+}
+
+@keyframes netShake {
+    0%, 100% { transform: translateY(-8px) translateX(0); }
+    25% { transform: translateY(-8px) translateX(-2px); }
+    75% { transform: translateY(-8px) translateX(2px); }
+}
+
+.net-shake {
+    animation: netShake 0.5s ease-in-out 2;
 }
 
 /* Loading animation */
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .animate-spin {
-  animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(135deg, #22c55e, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    background: linear-gradient(135deg, #22c55e, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-  .chat-scroll::-webkit-scrollbar {
-    width: 4px;
-  }
-  
-  .quick-question {
-    padding: 0.75rem;
-  }
-  
-  .quick-question h3 {
-    font-size: 0.875rem;
-  }
-  
-  .quick-question p {
-    font-size: 0.75rem;
-  }
+    .chat-scroll::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .quick-question {
+        padding: 0.75rem;
+    }
+    
+    .quick-question h3 {
+        font-size: 0.875rem;
+    }
+    
+    .quick-question p {
+        font-size: 0.75rem;
+    }
 }
 
 /* Focus states */
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
 }
 
 /* Button hover states */
 button:hover {
-  transform: translateY(-1px);
+    transform: translateY(-1px);
 }
 
 /* Smooth transitions for all interactive elements */
 * {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }

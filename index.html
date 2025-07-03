@@ -9,20 +9,31 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="h-screen flex flex-col bg-gradient-to-br from-green-50 to-blue-50">
+<body class="h-screen flex flex-col bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 gowun-dodum-regular">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-10 w-32 h-32 border-2 border-green-400 rounded-full"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 border-2 border-emerald-400 rounded-full"></div>
+        <div class="absolute bottom-32 left-1/4 w-20 h-20 border-2 border-teal-400 rounded-full"></div>
+        <div class="absolute bottom-20 right-1/3 w-28 h-28 border-2 border-green-400 rounded-full"></div>
+    </div>
+    
     <!-- Header -->
-    <header class="p-6 bg-gradient-to-r from-green-600 via-green-500 to-blue-600 text-white shadow-lg">
-        <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <header class="bg-white/95 backdrop-blur-sm shadow-lg border-b-4 border-gradient-to-r from-green-500 to-emerald-500 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
+            <!-- logo -->
             <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <img src="https://img.icons8.com/?size=100&id=16957&format=png&color=000000" alt="cup_img">
+                    <img
+                        src="https://img.icons8.com/?size=100&id=16957&format=png&color=000000"
+                        alt="cup_img">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold">CupGuide 2026</h1>
-                    <p class="text-green-100 text-sm">FIFA 월드컵에 대한 정보를 물어보세요</p>
+                    <h1 class="text-3xl bg-gradient-to-r from-green-700 to-emerald-700 bg-clip-text text-transparent font-pacifico">CupGuide 2026</h1>
+                    <p class="text-100 text-gray-600 gowun-dodum-regular">FIFA 월드컵 AI 어시스턴트</p>
                 </div>
             </div>
-            <button id="new-chat-btn" class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-200 flex items-center space-x-2">
+            <button id="new-chat-btn" class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-3 rounded-full whitespace-nowrap cursor-pointer transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 <i class="fas fa-plus text-sm"></i>
                 <span>새 대화</span>
             </button>
@@ -30,92 +41,97 @@
     </header>
 
     <!-- Main chat area -->
-    <main id="chat-container" class="flex-1 overflow-y-auto p-6 chat-scroll max-w-6xl mx-auto w-full">
-        <!-- Welcome message -->
-        <div id="welcome-message" class="text-center py-12">
-            <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-futbol text-white text-3xl"></i>
+    <main id="chat-container" class="flex-1 overflow-y-auto chat-scroll px-4 py-6 max-w-5xl mx-auto w-full">
+        <!-- Hero Section -->
+        <div id="welcome-message" class="text-center mb-20">
+            <div class="relative inline-block mb-8">
+                <!-- 큰 축구공 원형 배경 아이콘 -->
+                <div class="w-32 h-32 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto shadow-2xl animate-pulse">
+                    <i class="ri-football-fill text-white text-5xl"></i>
+                </div>
+                <!-- 우측 상단 트로피 작은 원형 아이콘 -->
+                <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="ri-trophy-fill text-white text-sm"></i>
+                </div>
             </div>
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">월드컵 정보 어시스턴트에 오신 것을 환영합니다!</h2>
-            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">FIFA 월드컵 주변 관광지, 규칙, 경기 결과, 이슈에 대해 무엇이든 물어보세요.</p>
-            
-            <!-- Quick action buttons -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-                <button class="quick-question bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-green-200 text-left" data-question="메트라이프 스타디움 주변 관광지를 알려주세요.">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-trophy text-green-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">경기장 근처 관광지</h3>
-                            <p class="text-sm text-gray-500">관광지, 맛집, 숙박 시설 관련 정보에 대해서 물어보세요</p>
-                        </div>
-                    </div>
-                </button>
-                
-                <button class="quick-question bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-green-200 text-left" data-question="이전 월드컵에서 바뀐 부분을 알려주세요.">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-user text-blue-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">월드컵 규칙</h3>
-                            <p class="text-sm text-gray-500">2026 월드컵 규칙과 변경 사항에 대해 물어보세요</p>
-                        </div>
-                    </div>
-                </button>
-                
-                <button class="quick-question bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-green-200 text-left" data-question="2022년 카타르 월드컵에 대한 정보를 알려주세요.">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-calendar text-yellow-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">월드컵 참가 팀 정보</h3>
-                            <p class="text-sm text-gray-500">역대 팀 전적 및 포메이션 정보에 대해 물어보세요</p>
-                        </div>
-                    </div>
-                </button>
+            <!-- 제목 -->
+            <h2 class="text-5xl font-bold bg-gradient-to-r from-gray-800 via-green-700 to-emerald-700 bg-clip-text text-transparent mb-6 leading-tight">
+                월드컵 정보 어시스턴트에<br />
+                <span class="text-green-600">오신 것을 환영합니다!</span>
+            </h2>
+            <!-- 설명 -->
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
+                FIFA 월드컵 관람지, 규칙, 경기 결과, 이슈에 대해 무엇이든 물어보세요.<br />
+                <span class="text-green-600 font-semibold">AI가 정확하고 빠르게 답변해드립니다.</span>
+            </p>
 
-                <button class="quick-question bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100 hover:border-green-200 text-left" data-question="2022년 카타르 월드컵에 대한 정보를 알려주세요.">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-calendar text-yellow-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">월드컵 이슈</h3>
-                            <p class="text-sm text-gray-500">관련 사건•사고 또는 징크스 관련 정보에 대해 물어보세요</p>
-                        </div>
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
+                <!-- 관광지 카드 -->
+                <div class="quick-question bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border-l-4 border-green-500 hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:bg-white">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="ri-trophy-fill text-green-600 text-2xl items-center"></i>
                     </div>
-                </button>
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg">경기장 근처 관광지</h3>
+                    <p class="text-gray-600 leading-relaxed">관광지, 맛집, 숙박 시설 관련 정보에 대해서 물어보세요</p>
+                </div>
+                <!-- 규칙 카드 -->
+                <div class="quick-question bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border-l-4 border-blue-500 hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:bg-white">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="ri-book-open-fill text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg">월드컵 규칙</h3>
+                    <p class="text-gray-600 leading-relaxed">2026 월드컵 규칙과 변경 사항에 대해 물어보세요</p>
+                </div>
+
+                <!-- 팀 정보 카드 -->
+                <div class="quick-question bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border-l-4 border-amber-500 hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:bg-white">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="ri-team-fill text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg">월드컵 참가 팀 정보</h3>
+                    <p class="text-gray-600 leading-relaxed">역대 팀 전적 및 포메이션 정보에 대해 물어보세요</p>
+                </div>
+
+                <!-- 이슈 카드 -->
+                <div class="quick-question bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border-l-4 border-purple-500 hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:bg-white">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <i class="ri-information-fill text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg">월드컵 이슈</h3>
+                    <p class="text-gray-600 leading-relaxed">관련 사건사고 또는 징크스 관련 정보에 대해 물어보세요</p>
+                </div>
             </div>
         </div>
     </main>
+    <footer class="px-4 pb-6">
+        <!-- Chat Input -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl border-4 border-green-200 p-6 relative overflow-hidden max-w-5xl mx-auto">
+            <!-- 배경 그라데이션 효과 레이어 -->
+            <div class="absolute inset-0 bg-gradient-to-r from-green-50/50 to-emerald-50/50"></div>
 
-    <!-- Input area -->
-    <footer class="border-t border-gray-200 bg-white/80 backdrop-blur-sm p-6">
-        <div class="max-w-6xl mx-auto">
-            <form id="message-form" class="flex items-end space-x-4">
-                <div class="flex-1 relative">
+            <!-- 입력창과 버튼 영역 -->
+            <div class="relative flex items-center space-x-6">
+                <form id="message-form" class="flex items-end justify-between w-full space x-4">
+                    <!-- 텍스트 입력 -->
                     <textarea id="user-input"
-                        class="w-full border border-gray-300 rounded-xl p-4 pr-16 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 resize-none"
-                        placeholder="월드컵에 대해 궁금한 것을 물어보세요..." 
+                        class="w-full px-6 py-4 pr-14 text-base border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-200 focus:border-green-400 transition-all duration-300 bg-white/90 font-medium placeholder-gray-500"
+                        placeholder="월드컵에 대해 궁금한 것을 물어보세요..."
                         rows="1"
-                        required></textarea>
-                </div>
-                
-                <!-- Football and Goal area -->
-                <div class="flex items-center space-x-3 relative">
-                    <!-- Football button -->
-                    <button type="submit" id="football-btn" class="football" title="Send message">⚽</button>
-                    
-                    <!-- Goal post -->
-                    <div class="goal-post" id="goal-post">🥅</div>
-                </div>
-            </form>
-        </div>
-    </footer>
+                        required
+                    ></textarea>
 
+                    <!-- 아이콘 버튼들 -->
+                    <div class="flex items-center space-x-3">
+                        <button type="submit" id="football-btn" class="football" title="Send message">⚽</button>
+                        <div class="goal-post" id="goal-post">
+                            <img class="" src="./골대.png" alt="">
+                        </div>
+                    </div>    
+                </form>
+            </div>
+        </div>    
+    </footer>
     <script type="module" src="./src/app.js"></script>
 </body>
 

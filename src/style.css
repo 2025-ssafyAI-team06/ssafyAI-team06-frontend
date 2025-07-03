@@ -1,6 +1,20 @@
+@import url('https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+.gowun-dodum-regular {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 /* Custom scrollbar */
 .chat-scroll::-webkit-scrollbar {
@@ -74,6 +88,20 @@
     font-size: 28px;
     background: none;
     border: none;
+    outline: none; /* 포커스 시 outline 제거 */
+    box-shadow: none; /* 박스 섀도우 제거 */
+}
+
+.football:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.football:active {
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
 
 .football:hover {
@@ -93,33 +121,15 @@
 }
 
 /* Goal animation */
-@keyframes goalShot {
-    0% { 
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 1;
-    }
-    50% { 
-        transform: translateX(30px) translateY(-10px) scale(0.8);
-        opacity: 0.8;
-    }
-    100% { 
-        transform: translateX(60px) translateY(0) scale(0.6);
-        opacity: 0;
-    }
-}
-
-.goal-animation {
-    animation: goalShot 0.8s ease-out forwards;
-}
-
 @keyframes netShake {
     0%, 100% { transform: translateY(-8px) translateX(0); }
-    25% { transform: translateY(-8px) translateX(-2px); }
-    75% { transform: translateY(-8px) translateX(2px); }
+    25% { transform: translateY(-8px) translateX(-3px); }
+    50% { transform: translateY(-8px) translateX(0); }
+    75% { transform: translateY(-8px) translateX(3px); }
 }
 
 .net-shake {
-    animation: netShake 0.5s ease-in-out 2;
+    animation: netShake 0.6s ease-in-out 3;
 }
 
 /* Loading animation */

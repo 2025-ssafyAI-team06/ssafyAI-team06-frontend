@@ -45,6 +45,10 @@ function createMessageBubble(content, sender = "user") {
     const wrapper = document.createElement("div");
     wrapper.classList.add("mb-6", "flex", "items-start", "space-x-4", "animate-fade-in");
 
+    if (sender === "user") {
+        wrapper.classList.add("flex-row-reverse", "space-x-reverse")
+    }
+
     const avatar = document.createElement("div");
     avatar.classList.add(
         "w-12",
@@ -160,29 +164,40 @@ function scrollToBottom() {
 function playGoalAnimation() {
     // Create a clone of the football for animation
     const footballClone = footballBtn.cloneNode(true);
-    footballClone.style.position = 'absolute';
+    footballClone.style.position = 'fixed';
     footballClone.style.zIndex = '1000';
     footballClone.style.pointerEvents = 'none';
+    footballClone.style.transition = 'none';
     
     // Get the position of the original football
-    const rect = footballBtn.getBoundingClientRect();
-    const container = footballBtn.parentElement;
-    const containerRect = container.getBoundingClientRect();
+    const footballRect = footballBtn.getBoundingClientRect();
+    const goalRect = goalPost.getBoundingClientRect();
     
-    footballClone.style.left = (rect.left - containerRect.left) + 'px';
-    footballClone.style.top = (rect.top - containerRect.top) + 'px';
+    footballClone.style.left = footballRect.left + 'px';
+    footballClone.style.top = footballRect.top + 'px';
+    footballClone.style.width = footballRect.width + 'px';
+    footballClone.style.height = footballRect.height + 'px';
+
+    document.body.appendChild(footballClone);
+
+    const deltaX = goalRect.left - footballRect.left;
+    const deltaY = goalRect.top - footballRect.top;
     
-    container.appendChild(footballClone);
-    
-    // Start the animation
-    footballClone.classList.add('goal-animation');
+    // Start the animation with CSS transform
+    requestAnimationFrame(() => {
+        footballClone.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        footballClone.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0.6)`;
+        footballClone.style.opacity = '0';
+    });
     
     // Shake the goal net
     goalPost.classList.add('net-shake');
     
     // Clean up after animation
     setTimeout(() => {
-        footballClone.remove();
+        if (footballClone.parentNode) {
+            footballClone.remove();
+        }
         goalPost.classList.remove('net-shake');
     }, 800);
 }

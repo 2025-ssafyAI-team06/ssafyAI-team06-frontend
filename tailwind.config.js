@@ -29,7 +29,7 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['gowun-dodum-regular', 'sans-serif'],
       },
       boxShadow: {
         'worldcup': '0 4px 14px 0 rgba(34, 197, 94, 0.15)',

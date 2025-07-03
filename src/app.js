@@ -95,7 +95,7 @@ function createMessageBubble(content, sender = "user") {
 }
 
 function formatMessage(content) {
-    // Simple markdown-like formatting
+    if (typeof content !== 'string') return '';
     return content
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')

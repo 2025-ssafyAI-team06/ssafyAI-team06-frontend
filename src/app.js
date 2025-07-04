@@ -9,7 +9,7 @@ const apiSelector = document.getElementById("api-selector");
 const footballBtn = document.getElementById("football-btn");
 const goalPost = document.getElementById("goal-post");
 
-const BASE_URL = "https://2026-worldcup-agent.fly.dev"
+const BASE_URL = "https://3.36.74.242:443"
 
 // Auto-resize textarea
 function autoResizeTextarea() {

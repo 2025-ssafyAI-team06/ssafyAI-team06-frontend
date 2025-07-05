@@ -9,7 +9,8 @@ const apiSelector = document.getElementById("api-selector");
 const footballBtn = document.getElementById("football-btn");
 const goalPost = document.getElementById("goal-post");
 
-const BASE_URL = "https://3.36.74.242:443"
+// const BASE_URL = "https://3.36.74.242:443"
+BASE_URL = process.env.API_ENDPOINT
 
 // Auto-resize textarea
 function autoResizeTextarea() {
